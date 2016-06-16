@@ -1,0 +1,32 @@
+
+<h1>List Of Posts</h1>
+
+<%= link_to 'New Post', new_post_path %>
+
+
+<div class="container">
+    <% @posts.each do |post| %>
+      <div class="col-md-4 sortable" id="<%= post.id %>">
+        <div><%= post.title %></div>
+        <%= post.id %>
+        <!-- <div><%= post.text %></div>
+        <div><%= link_to 'Show', post_path(post) %></div>
+        <div><%= link_to 'Edit', edit_post_path(post) %></div><br> -->
+      </div>
+    <% end %>
+</div>
+
+<script>
+  var instance = {};
+
+  instance.update = function(event, ui){
+    var sortData = $(".container").sortable("toArray");
+    console.log(sortData);
+
+
+  };
+  $(function() {
+    $( ".container" ).sortable(instance);
+    $( ".container" ).disableSelection();
+  });
+</script>
