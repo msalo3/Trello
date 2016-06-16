@@ -18,11 +18,22 @@
 
 <script>
   var instance = {};
-
   instance.update = function(event, ui){
     var sortData = $(".container").sortable("toArray");
-    console.log(sortData);
+    var data = {};
+    data.myOrder = sortData;
+    $.ajax({
+      url: "/posts/order",
+      data: data,
+      type: "POST"
+    });
 
+    // var sortData = $(".container").sortable("toArray");
+    // $.ajax({
+    //   data: sortData,
+    //   url: "/posts/order",
+    //   type: "POST"
+    // });
 
   };
   $(function() {
